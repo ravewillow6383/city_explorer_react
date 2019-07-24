@@ -47,3 +47,10 @@ Should contain a Google Map placholder. This does not have to be wired up work y
 
 Should contain an <section> element with placeholder content that will be filled with real-time data later in the week. You may simply nest 5 <Result> components inside of <Main> for the time being. We will be recomposing this later in the week.
 
+Number and name of feature: Props & State
+Estimate of time needed to complete: 4 hours
+Start time: 830pm
+
+Finish time: 10pm
+
+Actual time needed to complete:1.5 hours
