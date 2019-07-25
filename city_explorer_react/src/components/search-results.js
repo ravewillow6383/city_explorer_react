@@ -1,3 +1,13 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 
-export default () => <p>search result coming soon</p>
+class Result extends Component {
+    render(){
+      return(
+        <Fragment>
+        <section>Yelp, EventBrite, Movies, weather, hiking! </section>
+        </Fragment>
+      )
+    }
+  }
+  
+export default Result
