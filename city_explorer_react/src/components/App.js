@@ -18,35 +18,49 @@ class App extends Component {
         formatted_query: '',
         latitude: '',
         longitude: ''
-      }
+      },
+
+      forecasts:[],
+      movies: [],
+      events: [],
+      reviews: [],
+      trails: []
     };
   }
 
   searchEntered = async query => {
     query.preventDefault();
-    // fetch`https://city-explorer-backend.herokuapp.com/location?data=${query}`
-    // .then(results => {
-    //   return results.json();
-    // }).then(data => {
-    //   let location = data.results.map((city) => {
-    //     return<div key={city.results}>
-    //       search_query: query,
-    //       formatted_query: data_query.formatted_query,
-    //       latitude: data_query.latitude,
-    //       longitude: data_query.longitude
-    //     </div>
-    //   })
-    // })
-    let data_query = await superagent.get(`https://city-explorer-backend.herokuapp.com/location?data=${query}`);
-    await this.setState({
-      location: {
-        search_query: query,
-        formatted_query: data_query.body.formatted_query,
-        latitude: data_query.body.latitude,
-        longitude: data_query.body.longitude
-      }
+    const url = 'https://city-explorer-backend.herokuapp.com'
+    let dataQuery = await superagent.get(`${url}/location?data=${query}`);
+
+    const location = {
+      search_query: dataQuery.body.search_query,
+      formatted_query: dataQuery.body.formatted_query,
+      latitude: dataQuery.body.latitude,
+      longitude: dataQuery.body.longitude
+    }
+
+    const queryString = `data[formatted_query]=${location.formatted_query}$data[latitude]=${location.latitude}$data[longitude]=${location.longitude}`;
+
+    const forecast = await superagent.get(`${url}/weather?${queryString}`);
+
+    const movies = await superagent.get(`${url}/movies?${queryString}`);
+
+    const yelp = await superagent.get(`${url}/yelp?${queryString}`);
+
+    const trails = await superagent.get(`${url}/trails?${queryString}`);
+
+    const events = await superagent.get(`${url}/events?${queryString}`);
+
+    this.setState({
+      location,
+      forecast : forecast.body,
+      movies : movies.body,
+      yelp : yelp.body,
+      trails : trails.body,
+      events : events.body
+
     });
-    
   }
 
   render() {
@@ -54,7 +68,11 @@ class App extends Component {
       <Fragment>
         <Header />
         <SearchForm handleSubmit={this.searchEntered}/>
-        <Map />
+        {this.state.location && (
+        <>
+          <Map />
+        </>
+        )}
         <SearchResults />
         <Main />
       </Fragment>

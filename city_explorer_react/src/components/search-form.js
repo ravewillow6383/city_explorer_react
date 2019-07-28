@@ -17,7 +17,7 @@ class SearchForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleSubmit(this.state.query)
+        this.props.handleSubmit(this.state.query);
     }
     render() {
         return (
