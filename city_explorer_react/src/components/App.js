@@ -1,11 +1,12 @@
 import React, {Fragment, Component} from 'react';
+import '../scss/core.scss'
 import Header from './header.js';
 import SearchForm from './search-form.js';
 import SearchResults from './search-results.js'
 import Map from './map.js';
 import Result from './search-results.js';
 
-import superagent from 'superagent'
+import superagent from 'superagent';
 
 
 
@@ -29,7 +30,7 @@ class App extends Component {
   }
 
   searchEntered = async query => {
-    query.preventDefault();
+    // query.preventDefault();
     const url = 'https://city-explorer-backend.herokuapp.com'
     let dataQuery = await superagent.get(`${url}/location?data=${query}`);
 

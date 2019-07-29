@@ -4,8 +4,8 @@ export default props => (
   <div>
     <h2>Forecasts</h2>
     <ul>
-      {props.data.map(forecast => (
-        <li key={forecast.time}>{forecast.forecast}</li>
+      {props.data.map(weather => (
+        <li key={weather.time}>{weather.forecast}</li>
       ))}
     </ul>
   </div>
