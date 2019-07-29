@@ -1,0 +1,74 @@
+h2 {
+    padding: $gutter_std;
+}
+
+.result {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid #2F4F4F;
+    @extend h2;
+
+    background: $white;
+    transition: $animation_time all;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+}
+
+main {
+    >div {
+        background: $black;
+        color: $white;
+        padding: $gutter_std;
+    }
+}
+
+.title {
+    font-size: 100px;
+    font-family: 'Bungee Outline', cursive;
+    color: $white;
+    text-align: right;
+}
+
+.input{
+    padding:5px 15px; 
+    background:#ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    margin: 0 auto;
+    margin-left:45%;
+    height:20px;
+}
+.button{
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-family: 'Cabin', sans-serif;
+    width: 180px;
+    font-size: 15px;
+    margin-left: 5px;
+    height: 35px;
+}
+.button {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .button:hover {
+    background: #2F4F4F radial-gradient(circle, transparent 1%, #2F4F4F 1%) center/15000%;
+  }
+  .button:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+  .enter {
+    
+    font-family: 'Cabin', sans-serif;
+    text-align: center;
+    padding: 15px;
+  }
+.map{
+    text-align: center;
+}
